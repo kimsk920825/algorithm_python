@@ -1,19 +1,29 @@
 import sys
 
 sys.stdin = open("./input.txt", "r")
-n, limit = map(int, input().split())
-passenger = list(map(int, input().split()))
-passenger.sort()
-cnt = 0
-while passenger:
-    if len(passenger) == 1:
-        cnt = +1
+n = int(input())
+a = list(map(int, input().split()))
+lt = 0
+rt = n - 1
+last = 0
+res = ""
+tmp = []
+
+while lt <= rt:
+    if a[lt] > last:
+        tmp.append((a[lt], "L"))
+    if a[rt] > last:
+        tmp.append((a[rt], "R"))
+    tmp.sort()
+    if len(tmp) == 0:
         break
-    if passenger[0] + passenger[1] > limit:
-        passenger.pop()
-        cnt += 1
     else:
-        passenger.pop(0)
-        passenger.pop()
-        cnt += 1
-print(cnt)
+        res += tmp[0][1]
+        last = tmp[0][0]
+    if tmp[0][1] == "L":
+        lt += 1
+    else:
+        rt -= 1
+    tmp.clear()
+print(len(res))
+print(res)
