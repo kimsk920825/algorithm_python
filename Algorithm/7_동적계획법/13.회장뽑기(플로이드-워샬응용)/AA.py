@@ -34,3 +34,7 @@ if __name__ == "__main__":
     print("%d %d" % (score, len(out)))
     for x in out:
         print(x, end=" ")
+
+# 커밋 테스트 입니다
+# 테스트 하는 이유는 푸쉬를 했을 때 하루 전날 커밋한것으로 나오기 때문입니다.
+test = "test"
